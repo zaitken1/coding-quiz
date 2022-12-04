@@ -1,18 +1,44 @@
+// GLOBAL VARIABLES
 var currentQuestionIndex = 0;
-
-// Add event listener to Start button
 var btn = document.getElementById('start');
 var questionsWrapper = document.getElementById('questions');
 var startScreen = document.getElementById('start-screen');
 var questionTitle = document.getElementById('question-title');
 var choicesOutput = document.getElementById('choices');
+var endScreen = document.getElementById('end-screen');
  
+// ADD EVENT LISTENER TO START BUTTON
 btn.addEventListener('click', showQuizContent);
 
- function showQuizContent (){
+// FUNCTION TO SHOW QUESTIONS, START TIMER AND LOOP THROUGH QUESTIONS ARRAY
+function showQuizContent (){
     questionsWrapper.style.display = 'block';
     startScreen.style.display = 'none';
+
+    // SET TIMER ON START BUTTON CLICK
+    var time = 60;
+
+    var countdownEl = document.getElementById('time');
     
+    setInterval(updateCountdown, 1000);
+    
+    function updateCountdown () {
+        var minutes = Math.floor(time / 60);
+        var seconds = time % 60;
+    
+        countdownEl.innerHTML = `${seconds}`
+            
+        if (time > 0) {
+        time--;
+        }
+    
+        if (time === 0) {
+            questionsWrapper.style.display = 'none';
+            endScreen.style.display = 'block';
+        }
+    }
+    
+    //LOOP THROUGH QUIZ QUESTIONS
     var currentQuestion = quizQuestions[currentQuestionIndex];
     var choices = currentQuestion.choices;
 
@@ -28,19 +54,18 @@ btn.addEventListener('click', showQuizContent);
         <button data-correct=${isCorrect}>${choice}</button>
         `)
     }
-
-    questionsWrapper.classList.remove('hide');
  }
 
- function checkAnswer(event){
-    console.log('event.target');
+choicesOutput.addEventListener('click', checkAnswer);
+
+function checkAnswer(){
+    if (false.clicked == true) {
+        console.log("hello");
+    }
  }
 
- choicesOutput.addEventListener('click', checkAnswer);
-
+ 
 
 // add click event listener to choices div as it is the parent element
-// if class = correct, show message 'correct', else show 'wrong'
+// if data-correct === false, show message 'wrong', deduct 10 seconds from timer & show next question, else show next question and show message 'correct'
 // store result
-// detract from timer
-// show next question
