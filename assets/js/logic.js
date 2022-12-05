@@ -5,15 +5,16 @@ var startScreen = document.getElementById('start-screen');
 var questionTitle = document.getElementById('question-title');
 var choicesOutput = document.getElementById('choices');
 var endScreen = document.getElementById('end-screen');
+var message = document.getElementById('message');
 var currentQuestionIndex = 0;
 var time = 60; 
-var audioCorrect = new Audio("./challenge/assets/sfx/correct.wav");
-var audioIncorrect = new Audio("./challenge/assets/sfx/incorrect.wav");
+var audioCorrect = new Audio("assets/sfx/correct.wav");
+var audioIncorrect = new Audio("assets/sfx/incorrect.wav");
 
 // ADD EVENT LISTENER TO START BUTTON
 btn.addEventListener('click', showQuizContent);
 
-// FUNCTION TO SHOW QUESTIONS, START TIMER AND LOOP THROUGH QUESTIONS ARRAY
+// FUNCTION TO SHOW QUESTIONS AND START TIMER
 function showQuizContent (){
     questionsWrapper.style.display = 'block';
     startScreen.style.display = 'none';
@@ -73,28 +74,42 @@ choicesOutput.addEventListener('click', checkAnswer);
 //FUNCTION TO CHECK ANSWER CORRECT OR FALSE
 function checkAnswer(event){
     if (event.target.dataset.correct === "false"){
-        choicesOutput.insertAdjacentHTML('beforeend', `
-        <p>Wrong!</p>
-        `);
         audioIncorrect.play();
         time -= 10;
         nextQuestion();
     }
     else {
-        choicesOutput.insertAdjacentHTML('beforeend', `
-        <p>Correct!</p>
-        `);
         audioCorrect.play();
         nextQuestion();
     }
 }
 
 //FUNTION TO INCREMENT QUESTION
-function nextQuestion() {
-    currentQuestionIndex++;
-    showQuestions();
+function nextQuestion() {  
+    if (currentQuestionIndex < quizQuestions.length-1){
+        currentQuestionIndex++;
+        showQuestions();
+        displayMessage();
+    }
+    else {
+        questionsWrapper.style.display = 'none';
+        endScreen.style.display = 'block';
+    }
 }
 
-// 
-// if data-correct === false, show message 'wrong', deduct 10 seconds from timer & show next question, else show next question and show message 'correct'
-// store result
+//FUNCTION TO DISPLAY MESSAGE
+function displayMessage(){
+    if (event.target.dataset.correct === "false"){
+        message.innerHTML = "Wrong";
+        setTimeout(function(){
+        message.innerHTML = "";
+        }, 3000);
+    } else {
+        message.innerHTML = "Correct";
+        setTimeout(function(){
+        message.innerHTML = "";
+        }, 3000);
+    }
+}
+
+//if currentQuestionIndex < quizQuestions.length, currentQuestionIndex++, else set questionsWrapper to hide and end screen to show
