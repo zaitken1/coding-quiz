@@ -6,6 +6,7 @@ var questionTitle = document.getElementById('question-title');
 var choicesOutput = document.getElementById('choices');
 var endScreen = document.getElementById('end-screen');
 var message = document.getElementById('message');
+var finalScore = document.getElementById('final-score');
 var currentQuestionIndex = 0;
 var time = 60; 
 var audioCorrect = new Audio("assets/sfx/correct.wav");
@@ -94,6 +95,7 @@ function nextQuestion() {
     else {
         questionsWrapper.style.display = 'none';
         endScreen.style.display = 'block';
+        finalScore.innerHTML = time;
     }
 }
 
@@ -112,4 +114,3 @@ function displayMessage(){
     }
 }
 
-//if currentQuestionIndex < quizQuestions.length, currentQuestionIndex++, else set questionsWrapper to hide and end screen to show
