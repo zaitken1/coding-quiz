@@ -7,10 +7,12 @@ var choicesOutput = document.getElementById('choices');
 var endScreen = document.getElementById('end-screen');
 var message = document.getElementById('message');
 var finalScore = document.getElementById('final-score');
+var enterInitials = document.getElementById('initials');
 var currentQuestionIndex = 0;
 var time = 60; 
 var audioCorrect = new Audio("assets/sfx/correct.wav");
 var audioIncorrect = new Audio("assets/sfx/incorrect.wav");
+var intervalHandler
 
 // ADD EVENT LISTENER TO START BUTTON
 btn.addEventListener('click', showQuizContent);
@@ -23,7 +25,9 @@ function showQuizContent (){
     // SET TIMER ON START BUTTON CLICK
     var countdownEl = document.getElementById('time');
     
-    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    intervalHandler = setInterval(updateCountdown, 1000);
     
     function updateCountdown () {
         var minutes = Math.floor(time / 60);
@@ -42,7 +46,6 @@ function showQuizContent (){
     }
     
     showQuestions();
-
 }
 
 
@@ -85,7 +88,7 @@ function checkAnswer(event){
     }
 }
 
-//FUNTION TO INCREMENT QUESTION
+//FUNTION TO INCREMENT QUESTION, DISPLAY END SCREEN AND FINAL SCORE
 function nextQuestion() {  
     if (currentQuestionIndex < quizQuestions.length-1){
         currentQuestionIndex++;
@@ -96,6 +99,7 @@ function nextQuestion() {
         questionsWrapper.style.display = 'none';
         endScreen.style.display = 'block';
         finalScore.innerHTML = time;
+        clearInterval(intervalHandler);
     }
 }
 
@@ -113,4 +117,6 @@ function displayMessage(){
         }, 3000);
     }
 }
+
+//PUT INITIALS AND SCORE INTO LOCAL STORAGE
 
