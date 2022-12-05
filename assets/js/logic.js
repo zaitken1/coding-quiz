@@ -99,7 +99,8 @@ function nextQuestion() {
         questionsWrapper.style.display = 'none';
         endScreen.style.display = 'block';
         finalScore.innerHTML = time;
-        clearInterval(intervalHandler);
+        finalScore = time;
+        time = 0;
     }
 }
 
@@ -119,4 +120,19 @@ function displayMessage(){
 }
 
 //PUT INITIALS AND SCORE INTO LOCAL STORAGE
+var submitButton = document.getElementById('submit');
 
+
+submitButton.addEventListener("click", function(event){
+    var setInitials = document.getElementById('initials');
+    var value = setInitials.value;
+    var score = finalScore
+
+    var userData = {
+        initials: value,
+        score: finalScore
+    };
+    
+    
+    localStorage.setItem("highScoresData", JSON.stringify(userData));
+});

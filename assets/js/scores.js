@@ -1,10 +1,10 @@
-var highScore = localStorage.getItem("highScore");
+var getHighScores = JSON.parse(localStorage.getItem("highScoresData"));
 
-var initials = localStorage.getItem("initials");
+console.log(getHighScores);
 
 document.getElementById("highscores").innerHTML = `
 <ol>
-  <li>${userInitials} - ${highScore}</li>
+  <li>${getHighScores.initials} - ${getHighScores.score}</li>
 </ol>
 `;
 
