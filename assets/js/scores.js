@@ -1,14 +1,23 @@
-var getHighScores = JSON.parse(localStorage.getItem("highScoresData"));
+var getHighScores = localStorage.getItem("highScoresData") || '[]';
 
-console.log(getHighScores);
+getHighScores = JSON.parse(getHighScores);
 
 document.getElementById("highscores").innerHTML = `
 <ol>
-  <li>${getHighScores.initials} - ${getHighScores.score}</li>
+  <li>${getHighScores[0].initials} - ${getHighScores[0].score}</li>
 </ol>
 `;
+
+var clearBtn = document.getElementById("clear");
+
+clearBtn.addEventListener("click", clearScores);
 
 function clearScores() {
   document.getElementById("highscores").innerHTML = "";
   localStorage.clear();
 }
+
+
+// If getHighScores is empty, show ""
+//else if getHighScores contains data, show data
+//

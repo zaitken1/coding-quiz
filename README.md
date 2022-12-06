@@ -1,88 +1,35 @@
-# Module 6 Challenge Web APIs: Code Quiz
+# Coding Quiz
 
-## Your Task
+## Description
 
-As you proceed in your journey to becoming a front-end web developer, it’s likely that you’ll be asked to complete a coding assessment, perhaps as part of an interview process. A typical coding assessment is a combination of multiple-choice questions and interactive coding challenges. 
+I have created a JavaScript Fundamentals coding quiz that loops through a series of questions before displaying your final score. 
 
-To help you become familiar with these tests and give you a chance to apply the skills from this module, this week’s challenge invites you to build a timed coding quiz with multiple-choice questions. This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean, polished, and responsive user interface. This week’s coursework has taught you all the skills you need to succeed in this challenge.
- 
+When you click the start button, the timer will start and you will see the first question. When you answer that question you will be presented with another question, and so forth until all the questions have been answered.
 
-## User Story
+When you answer a question incorrectly, the timer will be decremented by 10 seconds.
 
-```
-AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
-```
+WHEN all questions are answered or the timer reaches 0, the game is over and you will be presented with an end screen displaying your final score.On this page, you will be able to enter you initials and save them with your score.
 
-## Acceptance Criteria
+I have used the following tools to create this application:
 
-Create a code quiz that contains the following requirements:
+* Functions
+* Event listeners on buttons
+* setInterval to start the timer
+* If statements
+* For loops to loop through options and display all question options in individual buttons
+* localStorage to save and retrieve initials and scores
+* Event delegation
+* JSON.stringify to convert the initials and high scores into a string to save in localStorage
+* JSON.parse to retrieve string values from localStorage and convert back into objects
+* Custom attributes
 
-* A start button that when clicked a timer starts and the first question appears.
- 
-  * Questions contain buttons for each answer.
-  * 
-  * When answer is clicked, the next question appears
-  * 
-  * If the answer clicked was incorrect then subtract time from the clock
+## Screenshot
 
-* The quiz should end when all questions are answered or the timer reaches 0.
+![Alt text](./assets/images/screenshot.jpg)
 
-  * When the game ends, it should display their score and give the user the ability to save their initials and their score
-  
-## Mock-Up
+## Links
 
-The following animation demonstrates the application functionality:
+Live application: https://zaitken1.github.io/coding-quiz/
 
-![Animation of code quiz. Presses button to start quiz. Clicks the button for the answer to each question, displays if answer was correct or incorrect. Quiz finishes and displays high scores. User adds their intials, then clears their intials and starts over.](./assets/08-web-apis-challenge-demo.gif)
+GitHub repository: https://github.com/zaitken1/coding-quiz
 
-## Grading Requirements
-
-This challenge is graded based on the following criteria: 
-
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the above acceptance criteria.
-
-### Deployment: 32%
-
-* Application deployed at live URL.
-
-* Application loads with no errors.
-
-* Application GitHub URL submitted.
-
-* GitHub repository that contains application code.
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate.
-
-* Application user interface style is clean and polished.
-
-* Application resembles the mock-up functionality provided in the challenge instructions.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality README file with description, screenshot, and link to deployed application.
-
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
-
----
-© 2022 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.

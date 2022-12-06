@@ -122,17 +122,24 @@ function displayMessage(){
 //PUT INITIALS AND SCORE INTO LOCAL STORAGE
 var submitButton = document.getElementById('submit');
 
+submitButton.addEventListener("click", sendToStorage);
 
-submitButton.addEventListener("click", function(event){
+function sendToStorage(){
     var setInitials = document.getElementById('initials');
     var value = setInitials.value;
-    var score = finalScore
+    var score = finalScore;
 
-    var userData = {
+    var userData = [
+        {
         initials: value,
         score: finalScore
-    };
-    
-    
-    localStorage.setItem("highScoresData", JSON.stringify(userData));
-});
+        }
+    ];
+
+    var existingScores = localStorage.setItem("highScoresData", JSON.stringify(userData)) || '[]';
+    var getexistingScores = JSON.parse(localStorage.getItem("highScoresData"));
+    userData.push('hello');}
+
+
+    // var getHighScores = localStorage.getItem("highScoresData") || '[]';
+
