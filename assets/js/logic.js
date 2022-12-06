@@ -140,6 +140,3 @@ function sendToStorage(){
     var getexistingScores = JSON.parse(localStorage.getItem("highScoresData"));
     userData.push('hello');}
 
-
-    // var getHighScores = localStorage.getItem("highScoresData") || '[]';
-
